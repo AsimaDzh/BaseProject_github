@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Started");
     }
 
+
     public void GoToMenu()
     {
         CurrentState = GameState.Menu;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
         SceneLoader.Instance.Load(SceneNames.MainMenu);
         Debug.Log("Go to Main Menu");
     }
+
 
     public void Pause()
     {
