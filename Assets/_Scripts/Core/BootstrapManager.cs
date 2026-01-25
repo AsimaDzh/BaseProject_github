@@ -21,7 +21,7 @@ public class BootstrapManager : MonoBehaviour
         CreateSceneLoader();    
         CreateEventBus();
 
-        SceneLoader.Instance.Load(SceneName.MainMenu);
+        SceneLoader.Instance.Load(SceneNames.MainMenu);
     }
 
 

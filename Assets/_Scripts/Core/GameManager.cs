@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum GameState
 {
-    MainMenu = 0,
+    Menu = 0,
     Playing = 1,
     Paused = 2
 }
@@ -10,6 +10,7 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public GameState CurrentState { get; private set; } = GameState.Menu;
 
 
     private void Awake()
@@ -21,6 +22,33 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+
+
+    public void StartGame()
+    {
+        CurrentState = GameState.Playing;
+        Time.timeScale = 1f;
+        SceneLoader.Instance.Load(SceneNames.GameScene);
+        Debug.Log("Game Started");
+    }
+
+    public void GoToMenu()
+    {
+        CurrentState = GameState.Menu;
+        Time.timeScale = 1f;
+        SceneLoader.Instance.Load(SceneNames.MainMenu);
+        Debug.Log("Go to Main Menu");
+    }
+
+    public void Pause()
+    {
+        if (CurrentState != GameState.Playing) return;
+
+        CurrentState = GameState.Paused;
+        Time.timeScale = 0f;
+        EventBus.Instance.RaiseGamePaused();
+        Debug.Log("Game Paused");
     }
 }
 
