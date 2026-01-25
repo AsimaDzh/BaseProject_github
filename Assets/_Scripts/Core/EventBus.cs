@@ -21,13 +21,13 @@ public class EventBus : MonoBehaviour
 
     public void RaiseGamePaused()
     {
-        
+        OnGamePaused?.Invoke();
     }
 
 
     public void RaiseGameResumed()
     {
-        
+        OnGamePaused?.Invoke();
     }
 }
 
