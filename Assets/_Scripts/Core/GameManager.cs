@@ -52,5 +52,17 @@ public class GameManager : MonoBehaviour
         EventBus.Instance.RaiseGamePaused();
         Debug.Log("Game Paused");
     }
+
+
+    public void Resume()
+    {
+        if (CurrentState != GameState.Paused)
+            return;
+
+        CurrentState = GameState.Playing;
+        Time.timeScale = 1f;
+        EventBus.Instance.RaiseGameResumed();
+        Debug.Log("Game resumed");
+    }
 }
 
