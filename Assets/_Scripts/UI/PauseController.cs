@@ -16,6 +16,12 @@ public class PauseController : MonoBehaviour
             EventBus.Instance.OnGamePaused += ShowPausePanel;
             EventBus.Instance.OnGameResumed += HidePauseMenu;
         }
+
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnPausePressed += HandlePausePressed;
+            InputManager.Instance.OnCancelPressed += HandleCancelPressed;
+        }
     }
 
 
@@ -26,6 +32,25 @@ public class PauseController : MonoBehaviour
             EventBus.Instance.OnGamePaused -= ShowPausePanel;
             EventBus.Instance.OnGameResumed -= HidePauseMenu;
         }
+
+        if (InputManager.Instance != null)
+        {
+            InputManager.Instance.OnPausePressed -= HandlePausePressed;
+            InputManager.Instance.OnCancelPressed -= HandleCancelPressed;
+        }
+    }
+
+    void HandlePausePressed()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameState.Playing)
+            GameManager.Instance.Pause();
+    }
+
+
+    void HandleCancelPressed()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameState.Playing)
+            GameManager.Instance.Resume();
     }
 
 
@@ -36,53 +61,25 @@ public class PauseController : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePaused();
-        }
-    }
-
-
-    void TogglePaused()
-    {
-        if (GameManager.Instance == null)
-        {
-            Debug.LogWarning("GameManager instance is null. Cannot toggle pause state.");
-            return;
-        }
-
-        if (GameManager.Instance.CurrentState == GameState.Playing) 
-            GameManager.Instance.Pause();
-        else if (GameManager.Instance.CurrentState == GameState.Paused)
-            GameManager.Instance.Resume();
-    }
-
-
     void ShowPausePanel()
     {
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(true);
+        if (pauseMenuUI != null) pauseMenuUI.SetActive(true);
     }
 
     
     void HidePauseMenu()
     {
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
     }
 
 
     void OnResumeClicked()
     {
-        if (pauseMenuUI != null)
-            GameManager.Instance.Resume();
+        if (pauseMenuUI != null) GameManager.Instance.Resume();
     }
 
     void OnMainMenuClicked()
     {
-        if (pauseMenuUI != null)
-            GameManager.Instance.GoToMenu();
+        if (pauseMenuUI != null) GameManager.Instance.GoToMenu();
     }
 }
