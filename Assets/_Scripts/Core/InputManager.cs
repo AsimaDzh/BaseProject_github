@@ -31,10 +31,12 @@ public class InputManager : MonoBehaviour
     public bool SprintHeld { get; private set; }
     public bool CrouchHeld { get; private set; }
 
+    // Player Action
     public Action OnJumpPressed;
     public Action OnAttackPressed;
     public Action OnInteractPressed;
     public Action OnPausePressed;
+    // UI Action
     public Action OnCancelPressed;
 
 
@@ -62,7 +64,6 @@ public class InputManager : MonoBehaviour
             Debug.LogError("InputManager: NO Input Actions Asset");
             return;
         }
-
         playerActionMap = inputActions.FindActionMap("Player");
         uiActionMap = inputActions.FindActionMap("UI");
 
@@ -202,6 +203,7 @@ public class InputManager : MonoBehaviour
         if (playerActionMap != null) playerActionMap.Disable();
         Debug.Log("InputManager: Player input disabled (game paused)");
     }
+
 
     private void HandleGameResumed()
     {

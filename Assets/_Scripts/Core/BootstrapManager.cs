@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class BootstrapManager : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class BootstrapManager : MonoBehaviour
         CreateGameManager();
         CreateSceneLoader();    
         CreateEventBus();
+        CreateInputManager();
 
         SceneLoader.Instance.Load(SceneNames.MainMenu);
     }
@@ -65,6 +68,25 @@ public class BootstrapManager : MonoBehaviour
 
         GameObject go = new GameObject("EventBus");
         go.AddComponent<EventBus>();
+        DontDestroyOnLoad(go);
+    }
+
+
+    private void CreateInputManager()
+    {
+        InputManager existing = FindFirstObjectByType<InputManager>();
+        if (existing != null)
+        {
+            DontDestroyOnLoad(existing.gameObject);
+            return;
+        }
+        GameObject go = new GameObject("InputManager");
+        InputManager inputManager = go.AddComponent<InputManager>();
+        inputManager.inputActions = Resources.Load<InputActionAsset>("PlayerInputAction");
+
+        if (inputManager.inputActions == null)
+            Debug.LogError("BootstrapManager: Failed to load PlayerInputAction asset from Resources folder");
+
         DontDestroyOnLoad(go);
     }
 }
