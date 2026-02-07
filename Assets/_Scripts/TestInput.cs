@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class TestInput : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Update()
     {
-        
-    }
+        if (InputManager.Instance == null)
+        {
+            Debug.LogError("TestInput: No InputManager instance found!");
+            return;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Vector2 move = InputManager.Instance.MoveInput;
+        Vector2 look = InputManager.Instance.LookInput;
+
+        if (move != Vector2.zero) Debug.Log($"Move Input: {move}");
+        if (look != Vector2.zero) Debug.Log($"Look Input: {look}");
+
+        if (InputManager.Instance.JumpPressed) Debug.Log("Jump Pressed");
+        if (InputManager.Instance.AttackPressed) Debug.Log("Attack Pressed");
+        if (InputManager.Instance.InteractPressed) Debug.Log("Interact Pressed");
+
+        InputManager.Instance.ResetButtonFlags();
     }
 }

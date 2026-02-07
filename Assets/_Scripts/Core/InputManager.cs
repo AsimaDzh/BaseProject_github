@@ -177,12 +177,12 @@ public class InputManager : MonoBehaviour
     }
 
 
-    //public void ResetButtonFlags()
-    //{
-    //    JumpPressed = false;
-    //    AttackPressed = false;
-    //    InteractPressed = false;
-    //}
+    public void ResetButtonFlags()
+    {
+        JumpPressed = false;
+        AttackPressed = false;
+        InteractPressed = false;
+    }
 
 
     public void EnablePlayerInput()
