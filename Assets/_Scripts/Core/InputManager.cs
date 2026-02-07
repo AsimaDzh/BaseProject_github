@@ -64,6 +64,7 @@ public class InputManager : MonoBehaviour
             Debug.LogError("InputManager: NO Input Actions Asset");
             return;
         }
+
         playerActionMap = inputActions.FindActionMap("Player");
         uiActionMap = inputActions.FindActionMap("UI");
 
