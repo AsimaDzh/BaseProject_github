@@ -6,7 +6,7 @@ public class CameraTargetController : MonoBehaviour
     [Header("========== Mouse Settings ==========")]
     [SerializeField] private float mouseSensitivity = 2f;
     [SerializeField] private float minVerticalAngle = -30f;
-    [SerializeField] private float maxVerticalAgle = 60f;
+    [SerializeField] private float maxVerticalAngle = 60f;
 
     [Header("========== State ==========")]
     [SerializeField] private float currentYaw = 0f; // Y
@@ -22,7 +22,7 @@ public class CameraTargetController : MonoBehaviour
         currentPitch = Mathf.Clamp(
             currentPitch, 
             minVerticalAngle, 
-            maxVerticalAgle);
+            maxVerticalAngle);
         
         transform.localRotation = Quaternion.Euler(
             currentPitch, 
@@ -33,6 +33,40 @@ public class CameraTargetController : MonoBehaviour
 
     void Update()
     {
-        
+        if (InputManager.Instance == null) return;
+
+        Vector2 lookInput = InputManager.Instance.GetLookInput();
+
+        float mouseX = lookInput.x * mouseSensitivity;
+        float mouseY = lookInput.y * mouseSensitivity;
+
+        currentYaw += mouseX;
+        currentPitch -= mouseY;
+        currentPitch = Mathf.Clamp(
+            currentPitch,
+            minVerticalAngle,
+            maxVerticalAngle);
+
+        transform.localRotation = Quaternion.Euler(
+            currentPitch,
+            currentYaw,
+            0f);
+    }
+
+
+    public void SetMouseSensitivity(float sensitivity)
+    {
+        mouseSensitivity = Mathf.Clamp(sensitivity, 0.1f, 10f);
+    }
+
+
+    public float GetMouseSensitivity() => mouseSensitivity;
+
+
+    private static float NormalizeAngle(float angle)
+    {
+        while (angle > 180f) angle -= 360f;
+        while (angle < -180f) angle += 360f;
+        return angle;
     }
 }
