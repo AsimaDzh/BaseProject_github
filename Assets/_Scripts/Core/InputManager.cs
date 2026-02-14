@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     // Player Actions
     private InputAction moveAction;
     private InputAction lookAction;
+    private InputAction zoomAction;
     private InputAction jumpAction;
     private InputAction attackAction;
     private InputAction interactAction;
@@ -25,6 +26,7 @@ public class InputManager : MonoBehaviour
 
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
+    public float ZoomInput { get; private set; }
     public bool JumpPressed { get; private set; }
     public bool AttackPressed { get; private set; }
     public bool InteractPressed { get; private set; }
@@ -77,6 +79,7 @@ public class InputManager : MonoBehaviour
         // Connect actions
         moveAction = playerActionMap.FindAction("Move");
         lookAction = playerActionMap.FindAction("Look");
+        zoomAction = playerActionMap.FindAction("Zoom");
         jumpAction = playerActionMap.FindAction("Jump");
         attackAction = playerActionMap.FindAction("Attack");
         interactAction = playerActionMap.FindAction("Interact");
@@ -139,6 +142,7 @@ public class InputManager : MonoBehaviour
     {
         MoveInput = moveAction != null ? moveAction.ReadValue<Vector2>() : Vector2.zero;
         LookInput = lookAction != null ? lookAction.ReadValue<Vector2>() : Vector2.zero;
+        ZoomInput = zoomAction != null ? zoomAction.ReadValue<Vector2>().y : 0f;
         SprintHeld = sprintAction != null && sprintAction.IsPressed();
         CrouchHeld = crouchAction != null && crouchAction.IsPressed();
     }
@@ -222,6 +226,12 @@ public class InputManager : MonoBehaviour
     public Vector2 GetLookInput()
     {
         return LookInput;
+    }
+
+
+    public float GetZoomInput()
+    {
+        return ZoomInput;
     }
 
 
