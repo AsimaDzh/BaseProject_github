@@ -15,5 +15,7 @@ public class PlayerData : ScriptableObject
     [Min(0f)] public float MoveSpeed = 5f;
     [Min(0f)] public float JumpForce = 5f;
 
-    [Header("========== Combat ===========")]
+    [Header("========== Aditional parametrs ===========")]
+    [Min(0f)] public float Acceleration = 10f;
+    [Min(0f)] public float rotationSpeed = 720f;
 }
