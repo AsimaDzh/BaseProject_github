@@ -8,16 +8,15 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("ƒанные игрока")]
-    [Tooltip("ScriptableObject с базовыми параметрами игрока (PlayerData).")]
+    [Header("========== Player Data ===========")]
+    [Tooltip("ScriptableObject wth base player param.")]
     public PlayerData playerData;
 
-    [Header("“екущее состо€ние")]
-    
-    [Tooltip("“екущее здоровье игрока.")]
+    [Header("========== Current Stats (Runtime) ==========")]
+    [Tooltip("Current player health")]
     [SerializeField] private float currentHealth;
 
-    [Tooltip("“екуща€ мана (или энерги€) игрока.")]
+    [Tooltip("Current mana or player energy")]
     [SerializeField] private float currentMana;
 
     public float CurrentHealth => currentHealth;
@@ -38,7 +37,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (playerData == null)
         {
-            Debug.LogError("PlayerStats: PlayerData не назначен!", this);
+            Debug.LogError("PlayerStats: PlayerData is null!", this);
             return;
         }
         // Taking stats from PlayerData and applying them to current values, with clamping for safety.
@@ -51,32 +50,24 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    public void ApplyLevelUpBonuses(float healthBonus, float manaBonus)
-    {
-        if (playerData == null)
-        {
-            Debug.LogWarning("PlayerStats.ApplyLevelUpBonuses: PlayerData не назначен.", this);
-            return;
-        }
+    //public void ApplyLevelUpBonuses(float healthBonus, float manaBonus)
+    //{
+    //    if (playerData == null) return;
+       
+    //    playerData.maxHealth += healthBonus;
+    //    playerData.maxMana += manaBonus;
 
-        playerData.maxHealth += healthBonus;
-        playerData.maxMana += manaBonus;
+    //    currentHealth = playerData.maxHealth;
+    //    currentMana = Mathf.Clamp(currentMana, 0f, playerData.maxMana);
 
-        currentHealth = playerData.maxHealth;
-        currentMana = Mathf.Clamp(currentMana, 0f, playerData.maxMana);
-
-        OnHealthChanged?.Invoke(currentHealth, playerData.maxHealth);
-        OnManaChanged?.Invoke(currentMana, playerData.maxMana);
-    }
+    //    OnHealthChanged?.Invoke(currentHealth, playerData.maxHealth);
+    //    OnManaChanged?.Invoke(currentMana, playerData.maxMana);
+    //}
 
 
     public void TakeDamage(float amount)
     {
-        if (playerData == null)
-        {
-            Debug.LogWarning("PlayerStats.TakeDamage: PlayerData не назначен.", this);
-            return;
-        }
+        if (playerData == null) return;
 
         // Not sensible to take damage with non-positive value or to damage a dead player.
         if (amount <= 0f || currentHealth <= 0f) return;
@@ -92,11 +83,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Heal(float amount)
     {
-        if (playerData == null)
-        {
-            Debug.LogWarning("PlayerStats.Heal: PlayerData не назначен.", this);
-            return;
-        }
+        if (playerData == null) return;
 
         // Not sensible to heal with non-positive value or to heal a dead player.
         if (amount <= 0f || currentHealth <= 0f) return;
@@ -110,11 +97,7 @@ public class PlayerStats : MonoBehaviour
 
     public void AddMana(float amount)
     {
-        if (playerData == null)
-        {
-            Debug.LogWarning("PlayerStats.AddMana: PlayerData не назначен.", this);
-            return;
-        }
+        if (playerData == null) return;
 
         // If the amount is zero or negative, there's no point in trying to add mana.
         if (Mathf.Approximately(amount, 0f)) return;
