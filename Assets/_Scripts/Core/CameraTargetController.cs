@@ -12,6 +12,10 @@ public class CameraTargetController : MonoBehaviour
     [SerializeField] private float currentYaw = 0f; // Y
     [SerializeField] private float currentPitch = 20f; // X
 
+    [Header("========== Smoothing ==========")]
+    [SerializeField] private float rotationSmoothing = 5f;
+    private float _targetYaw, _targetPitch;
+
     
     void Awake()
     {
@@ -28,6 +32,9 @@ public class CameraTargetController : MonoBehaviour
             currentPitch, 
             currentYaw, 
             0f);
+
+        _targetYaw = currentYaw;
+        _targetPitch = currentPitch;
     }
 
 
@@ -51,6 +58,8 @@ public class CameraTargetController : MonoBehaviour
             currentPitch,
             currentYaw,
             0f);
+
+        ApplyLookInput(lookInput);
     }
 
 
@@ -68,5 +77,29 @@ public class CameraTargetController : MonoBehaviour
         while (angle > 180f) angle -= 360f;
         while (angle < -180f) angle += 360f;
         return angle;
+    }
+
+
+    private void ApplyLookInput(Vector2 lookInput)
+    {
+        float mouseX = lookInput.x * mouseSensitivity;
+        float mouseY = lookInput.y * mouseSensitivity;
+
+        // Update target angles based on input
+        _targetYaw += mouseX;
+        _targetPitch -= mouseY;
+        _targetPitch = Mathf.Clamp(
+            _targetPitch,
+            minVerticalAngle,
+            maxVerticalAngle);
+
+        // Smooth interpolation towards target angles
+        currentYaw = Mathf.LerpAngle(
+            currentYaw,
+            _targetYaw,
+            rotationSmoothing * Time.deltaTime);
+        currentPitch = Mathf.Lerp(
+            currentPitch,
+            currentYaw, 0f);
     }
 }
