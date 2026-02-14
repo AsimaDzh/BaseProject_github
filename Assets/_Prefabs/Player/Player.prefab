@@ -136,13 +136,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4663006628563092654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12278779, y: 0.6963643, z: -0.12278779, w: 0.6963643}
-  m_LocalPosition: {x: 1.8, y: -0.15, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8905372317551749949}
-  m_LocalEulerAnglesHint: {x: 20, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2135736203264640654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +160,7 @@ MonoBehaviour:
   maxVerticalAngle: 60
   currentYaw: 0
   currentPitch: 20
+  rotationSmoothing: 5
 --- !u!1 &5325224865296116643
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8905372317551749949}
+  - component: {fileID: 214972765712675191}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -301,3 +303,18 @@ Transform:
   - {fileID: 6170815230651651129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &214972765712675191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177348307420261927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944762d0d7578fb469772e1871ff1057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: e39a99e3401e1544d97e7f70c49524f9, type: 2}
+  currentHealth: 0
+  currentMana: 0
