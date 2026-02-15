@@ -107,4 +107,20 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+
+    private void HandleJump()
+    {
+        if (_isGrounded) return;
+
+        if (InputManager.Instance.IsJumpPressed())
+        {
+            float _jumpForce = 5f;
+
+            if(playerStats != null && playerStats.playerData != null)
+                _jumpForce = playerStats.playerData.jumpForce;
+
+            _verticalVelocity.y = Mathf.Sqrt(_jumpForce * -2f * gravity);
+        }
+    }
 }
