@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 5494518986120594192}
   - component: {fileID: 3745890112829502656}
   - component: {fileID: 9070961260467419213}
+  - component: {fileID: 8496253213481551535}
   - component: {fileID: 1616835397279935044}
   m_Layer: 0
   m_Name: Player
@@ -369,8 +370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e39a99e3401e1544d97e7f70c49524f9, type: 2}
-  currentHealth: 0
-  currentMana: 0
+  currentHealth: 140
+  currentMana: 20
 --- !u!114 &5494518986120594192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +422,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progression: {fileID: 3745890112829502656}
+--- !u!114 &8496253213481551535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177348307420261927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd0e9f9676b6b442b992223a17b4f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 214972765712675191}
 --- !u!143 &1616835397279935044
 CharacterController:
   m_ObjectHideFlags: 0
