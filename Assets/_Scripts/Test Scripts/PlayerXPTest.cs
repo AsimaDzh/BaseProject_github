@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PlayerXPTest : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public PlayerProgression progression;
+
+    private void Awake()
     {
-        
+        if (progression == null)
+            progression = FindFirstObjectByType<PlayerProgression>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (progression == null) return;
+
+        if (Input.GetKeyDown(KeyCode.X))
+            progression.AddXP(50f);
     }
 }
