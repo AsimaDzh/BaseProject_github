@@ -1979,6 +1979,26 @@ PrefabInstance:
       propertyPath: cmCamera
       value: 
       objectReference: {fileID: 990964615}
+    - target: {fileID: 3263931862936586566, guid: d8b5c392a4af6144d91f1c1545a3bdfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263931862936586566, guid: d8b5c392a4af6144d91f1c1545a3bdfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263931862936586566, guid: d8b5c392a4af6144d91f1c1545a3bdfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263931862936586566, guid: d8b5c392a4af6144d91f1c1545a3bdfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3263931862936586566, guid: d8b5c392a4af6144d91f1c1545a3bdfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 7177348307420261927, guid: d8b5c392a4af6144d91f1c1545a3bdfb, type: 3}
       propertyPath: m_Name
       value: Player
