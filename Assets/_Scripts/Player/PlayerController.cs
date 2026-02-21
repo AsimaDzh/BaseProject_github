@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (_isGrounded) return;
+        if (!_isGrounded) return;
 
         if (InputManager.Instance.IsJumpPressed())
         {
