@@ -50,25 +50,21 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    //public void ApplyLevelUpBonuses(float healthBonus, float manaBonus)
-    //{
-    //    if (playerData == null) return;
-       
-    //    playerData.maxHealth += healthBonus;
-    //    playerData.maxMana += manaBonus;
+    public void ApplyLevelUpBonuses(float healthBonus, float manaBonus)
+    {
+        playerData.maxHealth += healthBonus;
+        playerData.maxMana += manaBonus;
 
-    //    currentHealth = playerData.maxHealth;
-    //    currentMana = Mathf.Clamp(currentMana, 0f, playerData.maxMana);
+        currentHealth = playerData.maxHealth;
+        currentMana = Mathf.Clamp(currentMana, 0f, playerData.maxMana);
 
-    //    OnHealthChanged?.Invoke(currentHealth, playerData.maxHealth);
-    //    OnManaChanged?.Invoke(currentMana, playerData.maxMana);
-    //}
+        OnHealthChanged?.Invoke(currentHealth, playerData.maxHealth);
+        OnManaChanged?.Invoke(currentMana, playerData.maxMana);
+    }
 
 
     public void TakeDamage(float amount)
     {
-        if (playerData == null) return;
-
         // Not sensible to take damage with non-positive value or to damage a dead player.
         if (amount <= 0f || currentHealth <= 0f) return;
 
@@ -83,8 +79,6 @@ public class PlayerStats : MonoBehaviour
 
     public void Heal(float amount)
     {
-        if (playerData == null) return;
-
         // Not sensible to heal with non-positive value or to heal a dead player.
         if (amount <= 0f || currentHealth <= 0f) return;
 
@@ -97,8 +91,6 @@ public class PlayerStats : MonoBehaviour
 
     public void AddMana(float amount)
     {
-        if (playerData == null) return;
-
         // If the amount is zero or negative, there's no point in trying to add mana.
         if (Mathf.Approximately(amount, 0f)) return;
 
