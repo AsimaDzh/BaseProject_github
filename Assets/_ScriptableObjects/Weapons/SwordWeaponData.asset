@@ -16,9 +16,9 @@ MonoBehaviour:
   weaponType: 0
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   damage: 10
-  attackSpeed: 1
+  attackSpeed: 5
   range: 2
-  knockbackForce: 0
+  knockbackForce: 1
   attackAnimationName: Lolkekcheburek
   attackSound: {fileID: 0}
   projectilePrefab: {fileID: 0}

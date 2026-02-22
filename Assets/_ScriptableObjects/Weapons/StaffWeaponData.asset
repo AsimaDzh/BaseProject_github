@@ -15,10 +15,10 @@ MonoBehaviour:
   weaponName: Staff
   weaponType: 2
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  damage: 10
+  damage: 2
   attackSpeed: 1
-  range: 2
-  knockbackForce: 0
+  range: 10
+  knockbackForce: 10
   attackAnimationName: Lolkek
   attackSound: {fileID: 0}
   projectilePrefab: {fileID: 0}
