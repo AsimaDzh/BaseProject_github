@@ -6,7 +6,7 @@ using UnityEngine;
     menuName = "GameData/WeaponData", 
     order = 1)]
 
-public class WeaponData : MonoBehaviour
+public class WeaponData : ScriptableObject
 {
     public enum WeaponType
     {
