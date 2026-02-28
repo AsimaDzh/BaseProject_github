@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class WeaponBase : MonoBehaviour
 {
     [Header("========== Weapon Data ==========")]
-    [SerializeField] private WeaponData weaponData;
-    [SerializeField] private Transform owner;
+    public WeaponData weaponData;
+    public Transform owner;
 
     protected float nextAttackTime = 0f;
 
