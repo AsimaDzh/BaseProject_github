@@ -27,18 +27,18 @@ public class RangedWeapon : WeaponBase
         }
 
         // Determine spawn position and rotation for the projectile
-        Vector3 spawnPosition = shootOrigin != null
+        Vector3 _spawnPosition = shootOrigin != null
             ? shootOrigin.position
             : (owner != null ? owner.position : transform.position);
 
-        Quaternion spawnRotation = shootOrigin != null
+        Quaternion _spawnRotation = shootOrigin != null
             ? shootOrigin.rotation
             : (owner != null ? owner.rotation : transform.rotation);
 
         GameObject projectileObject = Instantiate(
             weaponData.projectilePrefab,
-            spawnPosition,
-            spawnRotation
+            _spawnPosition,
+            _spawnRotation
         );
 
         //Projectile _projectile = projectileObject.GetComponent<Projectile>();
