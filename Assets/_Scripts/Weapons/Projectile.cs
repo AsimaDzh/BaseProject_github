@@ -34,14 +34,9 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Check if the hit object is in the specified hit layers
-        if ((hitLayers.value & (1 << other.gameObject.layer)) == 0) return;
-        
+        if ((hitLayers.value & (1 << other.gameObject.layer)) == 0) 
+            return;
         Debug.Log($"{name}: hit {other.name}", other);
-
-        // Apply damage or effects to the hit object here
-        // var _damageable = other.GetComponent<IDamageable>();
-        // if (_damageable != null)
-        //     _damageable.TakeDamage(damage);
         Destroy(gameObject);
     }
 }
