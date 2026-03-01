@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1876997612669463823}
   - component: {fileID: 1842947497751417224}
   - component: {fileID: 7360318236328853678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7520059451307461516}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 5385224763832499937}
   - component: {fileID: 5178322709886868450}
   - component: {fileID: 4357742075153847884}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
